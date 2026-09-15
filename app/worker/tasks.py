@@ -6,28 +6,36 @@ import os
 from app.core.database import SyncSessionLocal
 from app.models.project import EnergyResult, Project
 from app.services import energy as energy_service
+from app.services.cloud_storage import download_to_tempfile
 from app.services.pipeline import ingest_ifc
 from app.worker.celery_app import celery_app
 
 
 @celery_app.task(name="ifc.parse")
-def parse_ifc_task(project_id: int, path: str) -> dict:
+def parse_ifc_task(project_id: int, ifc_url: str) -> dict:
+    """Download the Cloudinary-hosted IFC into a throwaway temp file, parse it,
+    then delete the temp file. `ifc_url` is the Cloudinary secure URL saved on
+    the project by the upload endpoint — the worker never touches app disk
+    storage, only this parse-scoped temp copy."""
     db = SyncSessionLocal()
+    path: str | None = None
     try:
         project = db.get(Project, project_id)
         if not project:
             return {"ok": False, "error": "project not found"}
         try:
+            path = download_to_tempfile(ifc_url)
             ingest_ifc(db, project, path)
         except Exception as exc:  # noqa: BLE001
             return {"ok": False, "error": str(exc)}
         return {"ok": True, "project_id": project_id, "elements": len(project.elements)}
     finally:
         db.close()
-        try:
-            os.unlink(path)
-        except Exception:
-            pass
+        if path:
+            try:
+                os.unlink(path)
+            except Exception:
+                pass
 
 
 @celery_app.task(name="energy.simulate")

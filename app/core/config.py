@@ -3,6 +3,12 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     DATABASE_URL: str = ""
+    # Preferred: three discrete values from the Cloudinary dashboard. If set,
+    # these take priority over CLOUDINARY_URL (kept for back-compat with any
+    # existing single-string config).
+    CLOUDINARY_CLOUD_NAME: str | None = None
+    CLOUDINARY_API_KEY: str | None = None
+    CLOUDINARY_API_SECRET: str | None = None
     CLOUDINARY_URL: str | None = None
     SECRET_KEY: str = ""
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7

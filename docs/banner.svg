@@ -1,0 +1,40 @@
+<svg width="1200" height="220" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0d13"/>
+      <stop offset="100%" stop-color="#131a26"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="220" rx="14" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="1199" height="219" rx="14" fill="none" stroke="#232c3a"/>
+
+  <!-- building mark -->
+  <g transform="translate(64,64)">
+    <rect x="0" y="28" width="72" height="48" fill="none" stroke="#ff7a33" stroke-width="3.2"/>
+    <path d="M0 28 16 4h40l16 24" fill="none" stroke="#ff7a33" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M16 76V36M36 76V36M56 76V36" stroke="#ff7a33" stroke-width="2" opacity="0.55"/>
+  </g>
+
+  <text x="168" y="98" font-family="IBM Plex Mono, Menlo, monospace" font-size="40" font-weight="600" fill="#d7dde6">embodi<tspan fill="#ff7a33">.</tspan></text>
+  <text x="168" y="132" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="17" fill="#96a1b3">AI-driven embodied &amp; operational carbon analysis for BIM models</text>
+
+  <!-- decorative data ticks -->
+  <g font-family="IBM Plex Mono, Menlo, monospace" font-size="12" fill="#66708a">
+    <text x="168" y="168">IFC</text>
+    <text x="214" y="168">→</text>
+    <text x="240" y="168">CARBON</text>
+    <text x="330" y="168">→</text>
+    <text x="356" y="168">ENERGY</text>
+    <text x="440" y="168">→</text>
+    <text x="466" y="168">AI RECOMMENDATIONS</text>
+  </g>
+
+  <g transform="translate(940,44)" opacity="0.9">
+    <rect x="0" y="0" width="4" height="132" fill="#1f2733"/>
+    <rect x="20" y="70" width="18" height="62" fill="#4ade80"/>
+    <rect x="46" y="46" width="18" height="86" fill="#facc15"/>
+    <rect x="72" y="20" width="18" height="112" fill="#f87171"/>
+    <rect x="98" y="90" width="18" height="42" fill="#38bdf8"/>
+    <rect x="124" y="58" width="18" height="74" fill="#ff7a33"/>
+  </g>
+</svg>
