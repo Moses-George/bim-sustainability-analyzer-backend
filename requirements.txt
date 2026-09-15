@@ -14,7 +14,7 @@ PyJWT==2.9.0
 bcrypt==4.2.0
 celery==5.4.0
 redis==5.0.8
-cloudinary==1.41.0
+# cloudinary==1.41.0
 ifcopenshell==0.8.3.post2
 numpy==2.1.0
 scikit-learn==1.5.2
